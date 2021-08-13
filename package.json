@@ -1,0 +1,22 @@
+{
+    "name": "main-bot",
+    "version": "1.0.0",
+    "description": "Bot voor Ruben gaming",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon"
+    },
+    "keywords": [
+        "bot"
+    ],
+    "author": "Ruben Gaming",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^12.5.3",
+        "mysql": "^2.18.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    }
+}
