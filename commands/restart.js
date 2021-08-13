@@ -16,5 +16,5 @@ return message.channel.send(helpEmbed);
 }
 
 module.exports.help = {
-    name: "restart10"
+    name: "restart20"
 }
