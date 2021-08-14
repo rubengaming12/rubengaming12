@@ -159,7 +159,7 @@ client.on('message', (message) => {
     if(message.member.roles.cache.find(r => r.name.includes("👑 ❱ Ruben Gaming✔️"))) return;
     if(message.member.roles.cache.find(r => r.name.includes("💼 ❱ Staff"))) return;
     if(message.member.roles.cache.find(r => r.name.includes("💼 ❱ Management"))) return;
-    if(message.member.channels.cache.find(c => c.name.includes("📸media"))) return;
+    message.member.guild.channels.cache.get("840551757892681759");
     if (message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
       message.delete()
         message.channel.send(`${message.author} Uw links zijn verwijderd uit dit kanaal`);
