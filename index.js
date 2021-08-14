@@ -121,7 +121,7 @@ client.on("ready", async () => {
 });
 
 client.on('message', (message) => {
-    if (message.content.includes('discord.gg/'||'discordapp.com/invite/'||'https://')) {
+    if (message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
       message.delete()
         message.channel.send(`${message.author} Uw links zijn verwijderd uit dit`)
     }
