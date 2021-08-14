@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     if(!member) member = message.member;
 
     var embed = new discord.MessageEmbed()
-        .setTitle(`Avatar ${member.user.username}`)
+        .setTitle(`Avatar van ${member.user.username}`)
         .setColor("BLUE")
         .setImage(member.user.displayAvatarURL({ dynamic: true, size: 4096 }));
 
