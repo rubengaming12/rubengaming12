@@ -120,12 +120,6 @@ client.on("ready", async () => {
 
 });
 
-client.on('message', (message) => {
-    if (message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
-      message.delete()
-        message.channel.send(`${message.author} Uw links zijn verwijderd uit dit kanaal`)
-    }
-  })
 
 client.on("messageDelete", messageDeleted => {
 
@@ -160,6 +154,17 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 
 
 });
+
+client.on('message', (message) => {
+    if(message.member.roles.cache.find(r => r.name.includes("👑 ❱ Ruben Gaming✔️"))) return;
+    if(message.member.roles.cache.find(r => r.name.includes("💼 ❱ Staff"))) return;
+    if(message.member.roles.cache.find(r => r.name.includes("💼 ❱ Management"))) return;
+    if (message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
+      message.delete()
+        message.channel.send(`${message.author} Uw links zijn verwijderd uit dit kanaal`);
+    }
+
+})
 
 // var swearWords = ["koe", "kalf", "varken"]; 
 
