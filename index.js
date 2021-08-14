@@ -156,9 +156,9 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
 });
 
 client.on('message', (message) => {
-    if(message.member.roles.cache.find(r => r.name.includes("👑 ❱ Ruben Gaming✔️"))) return;
-    if(message.member.roles.cache.find(r => r.name.includes("💼 ❱ Staff"))) return;
-    if(message.member.roles.cache.find(r => r.name.includes("💼 ❱ Management"))) return;
+    if (!message.member.roles.cache.has('840528715065589801')) return
+    if (!message.member.roles.cache.has('840530451877068800')) return
+    if (!message.member.roles.cache.has('842833429728460840')) return
     message.member.guild.channels.cache.get("840551757892681759");
     if (message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
       message.delete()
