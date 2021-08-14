@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
     var embed = new discord.MessageEmbed()
         .setTitle(`Avatar ${member.user.username}`)
         .setColor("BLUE")
-        .setImage(member.user.displayAvatarURL({ dynamic, size: 4096 }));
+        .setImage(member.user.displayAvatarURL({ dynamic: true, size: 4096 }));
 
     message.channel.send(embed);
 
