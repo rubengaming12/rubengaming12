@@ -2,6 +2,7 @@ const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 const database = require("./database.json");
 const mysql = require("mysql");
+const levelFile = require("./data/levels.json");
 
 const activeSongs = new Map();
 
@@ -180,6 +181,43 @@ client.on("message", async message => {
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
+
+
+    var randomXp = Math.floor(Math.random(1) * 15) + 1;
+
+    var idUser = message.author.id;
+
+    if(!levelFile[idUser]){
+
+        levelFile[idUser] =  {
+
+            xp: 0,
+            level: 0
+
+        }
+
+
+    }
+
+    levelFile[idUser].xp += randomXp;
+
+    var levelUser = levelFile[idUser].level;
+    var xpUser = levelFile[idUser].xp;
+    var nextLevelXp = levelUser * 300;
+
+    if(nextLevelXp === 0) nextLevelXp = 100;
+
+    if( xpUser >= nextLevelXp){
+
+        levelFile[idUser].level += 1;
+
+        fs.writeFile("./data/levels.json", JSON.stringify(levelFile), err => {
+
+            if(err) console.log(err);
+
+        });
+
+    }
 
 
     var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
