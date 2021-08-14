@@ -131,6 +131,7 @@ client.on("messageDelete", messageDeleted => {
     var respone = `Bericht ${messageDeleted.id} is verwijderd uit ${messageDeleted.channel}\n **Bericht:** ${content}`;
 
     var embed = new discord.MessageEmbed()
+        .setTitle("Verwijderd bericht")
         .setAuthor(`${messageDeleted.author.id} ${messageDeleted.author.tag}`, `${messageDeleted.author.avatarURL({ size: 4096 })}`)
         .setDescription(respone)
         .setTimestamp()
@@ -145,6 +146,7 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     if (newMessage.author.bot) return;
 
     var embed = new discord.MessageEmbed()
+        .setTitle("Aangepast bericht")
         .setAuthor(`${newMessage.author.tag} (${newMessage.author.id})`, newMessage.author.avatarURL({ size: 4096 }))
         .setDescription(`Bericht ${newMessage} is bewerkt in ${newMessage.channel}\n **Voor:** ${oldMessage.content}\n**Na:** ${newMessage.content}`)
         .setTimestamp()
