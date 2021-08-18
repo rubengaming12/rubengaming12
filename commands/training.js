@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async(client, message, args) => {
 
-  const TrainingsKanaal = message.guild.channels.cache.get('857756346320289862')
+  const TrainingsKanaal = message.guild.channels.cache.get('852839997328982066')
   if(!TrainingsKanaal) return message.reply("Geen trainingskanaal gevonden");
 
                     var Eenheid = new discord.MessageEmbed()
