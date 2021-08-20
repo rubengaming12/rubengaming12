@@ -10,13 +10,13 @@ module.exports.run = async (bot, message, args) => {
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("Je hebt geen perms");
 
-    if(!winnerCount) return message.reply("Geen aantal spelers opgegeven");
-    if(!time) return message.reply("Geen tijd opgegeven");
-    if(!item) return message.reply("Geen item opgegeven");
-
     winnerCount = args[0];
     time = args[1];
     item = args.splice(2, args.lenght).join(" ");
+
+    if(!winnerCount) return message.reply("Geen aantal spelers opgegeven");
+    if(!time) return message.reply("Geen tijd opgegeven");
+    if(!item) return message.reply("Geen item opgegeven");
 
     message.delete();
 
