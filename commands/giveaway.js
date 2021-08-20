@@ -1,22 +1,44 @@
 const discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
-    //!giveaway aantalSpeler tijd bericht test test
-    
+    //!giveaway aantalSpeler tijd berichtjeTekst test test
+
     var item = "";
     var time;
     var winnerCount;
 
-    if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("Je hebt geen perms");
+    if (!message.member.hasPermission("BAN_MEMBERS")) var giveawaywEmbed = new discord.MessageEmbed()
+        .setTitle("Error")
+        .setColor("#ff1100")
+        .setDescription("Zorg dat je de juiste permissies krijgt\n\nBenodigde permissies: **BAN_MEMBERS**");
+
+        return message.channel.send(giveawaywEmbed);
 
     winnerCount = args[0];
     time = args[1];
-    item = args.splice(2, args.lenght).join(" ");
+    item = args.splice(2, args.length).join(" ");
 
-    if(!winnerCount) return message.reply("Geen aantal spelers opgegeven");
-    if(!time) return message.reply("Geen tijd opgegeven");
-    if(!item) return message.reply("Geen item opgegeven");
+    if (!winnerCount) var giveawayrEmbed = new discord.MessageEmbed()
+        .setTitle("Error")
+        .setColor("#ff1100")
+        .setDescription("Geen aantal spelers opgegeven.");
+
+        return message.channel.send(giveawayrEmbed);
+
+    if (!time) var giveawayyEmbed = new discord.MessageEmbed()
+        .setTitle("Error")
+        .setColor("#ff1100")
+        .setDescription("Geen tijd opgegeven.");
+
+        return message.channel.send(giveawayyEmbed);
+
+    if (!item) var giveawayiEmbed = new discord.MessageEmbed()
+        .setTitle("Error")
+        .setColor("#ff1100")
+        .setDescription("Geen winnaars item opgegeven.");
+
+        return message.channel.send(giveawayiEmbed);
 
     message.delete();
 
@@ -25,13 +47,14 @@ module.exports.run = async (bot, message, args) => {
 
     var giveawayEmbed = new discord.MessageEmbed()
         .setTitle("🎉 **GIVEAWAY** 🎉")
-        .setFooter(`Vervalt ${dateEnd}`)
+        .setColor("BLUE")
+        .setFooter(`Vervalt: ${dateEnd}`)
         .setDescription(item);
 
     var embedSend = await message.channel.send(giveawayEmbed);
     embedSend.react("🎉");
 
-    setTimeout(function(){
+    setTimeout(function () {
 
         var random = 0;
         var winners = [];
@@ -39,49 +62,64 @@ module.exports.run = async (bot, message, args) => {
 
         var peopleReacted = embedSend.reactions.cache.get("🎉").users.cache.array();
 
-        for (let i= 0; i < peopleReacted.length; i++) {
-            
-            if(peopleReacted[i].id == client.users.id){
-                peopleReacted.splice(i,1);
+        for (let i = 0; i < peopleReacted.length; i++) {
+
+            if (peopleReacted[i].id == client.user.id) {
+                peopleReacted.splice(i, 1);
                 continue;
             }
-            
+
         }
 
-        if(peopleReacted.lenght == 0) {
-            return message.channel.send("Niemand heeft gewonnen dus de bot wint");
+        if (peopleReacted.length == 0) {
+            var embedm = new discord.MessageEmbed()
+            .setTitle("Winnaar")
+            .setColor("BLUE")
+            .setDescription("Niemand heeft gewonnen dus de bot wint.");
+
+            return message.channel.send(embedm);
         }
 
-        if(peopleReacted.lenght < winnerCount) {
-            return message.channel.send("Er zijn te weinig mensen die mee deden dus de bot wint");
+        if (peopleReacted.length < winnerCount) {
+            var embedv = new discord.MessageEmbed()
+            .setTitle("Winnaar")
+            .setColor("BLUE")
+            .setDescription("Er zijn te weinig mensen die mee deden daarom heeft de bot gewonnen.");
+
+            return message.channel.send(embedv);
         }
 
-        for (let y = 0; y < array.length; y++) {
-            
+        for (let y = 0; y < winnerCount; y++) {
+
             inList = false;
 
-            random = Math.floor(Math.random() * peopleReacted.lenght);
+            random = Math.floor(Math.random() * peopleReacted.length);
 
             for (let o = 0; o < winners.length; o++) {
-                
-                if(winners[o] == peopleReacted[random]){
+
+                if (winners[o] == peopleReacted[random]) {
                     inList = true;
                     y--;
                     break;
                 }
-                
+
             }
 
-            if(!inList){
+            if (!inList) {
                 winners.push(peopleReacted[random]);
             }
-            
+
         }
 
         for (let y = 0; y < winners.length; y++) {
-            
-            message.channel.send("Proficiat: " + winners[i].username + `Je hebt gewonnen ${item}`);
-            
+
+            var embeds = new discord.MessageEmbed()
+            .setTitle("Winnaar")
+            .setColor("BLUE")
+            .setDescription("Proficiat: " + winners[y].username + `Je hebt gewonnen ${item}`);
+
+            return message.channel.send(embeds);
+
         }
 
     }, time * 1000)
@@ -89,5 +127,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "giveaway"
+    name: "giveaway",
 }
