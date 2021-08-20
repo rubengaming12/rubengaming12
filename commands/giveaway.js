@@ -113,12 +113,12 @@ module.exports.run = async (client, message, args) => {
 
         for (let y = 0; y < winners.length; y++) {
 
-            var embeds = new discord.MessageEmbed()
+            var embed = new discord.MessageEmbed()
             .setTitle("Winnaar")
             .setColor("BLUE")
             .setDescription("Proficiat: " + winners[y].username + `Je hebt gewonnen ${item}`);
 
-            return message.channel.send(embeds);
+            return message.channel.send(embed);
 
         }
 
