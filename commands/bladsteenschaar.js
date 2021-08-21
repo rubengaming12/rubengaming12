@@ -4,7 +4,14 @@ module.exports.run = async (client, message, args) => {
 
     // sps steen, papier, schaar
 
-    if (!args[0]) return message.reply("Gebruik sps <steen, paapier, schaar>");
+    var embed = new discord.MessageEmbed()
+        .setTitle("Steen, papier, schaar")
+        .setColor("BLUE")
+        .setDescription("Gebruik sps <steen, papier, schaar>");
+
+        return message.channel.send(embed);
+
+    if (!args[0]) 
 
     var options = ["steen", "papier", "schaar"];
 
