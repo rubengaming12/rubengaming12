@@ -4,10 +4,9 @@ module.exports.run = async (client, message, args) => {
 
     // sps steen, papier, schaar
 
+    if (!args[0]) return message.reply("Gebruik sps <steen, paapier, schaar>");
 
-    if (!args[0]) 
-
-    var options = ["steen", "papier", "schaar"]; return message.reply("Gebruik sps <steen, papier, schaar>")
+    var options = ["steen", "papier", "schaar"];
 
     var result = options[Math.floor(Math.random() * options.length)];
 
