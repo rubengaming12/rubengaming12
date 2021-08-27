@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+    if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("Je hebt geen perms");
+    
     message.delete()
 
     var helpEmbed = new discord.MessageEmbed()
