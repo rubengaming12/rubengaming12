@@ -111,6 +111,35 @@ client.on("guildMemberRemove", member => {
 
 });
 
+client.on('message', async message => {
+	if (message.author.bot) return;
+		  if(db.has(`afk-${message.author.id}+${message.guild.id}`)) {
+		    const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
+		    await db.delete(`afk-${message.author.id}+${message.guild.id}`)
+		    message.reply(`Je AFK is verwijderd!`)
+		  }
+	if(message.mention.members.first()) {
+	  if(db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
+	    message.channel.send(db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
+	  }else return;
+	}else;
+
+	var prefix = process.env['prefix']
+
+	var messageArray = message.content.split(' ');
+
+	var command = messageArray[0];
+
+	if (!message.content.startsWith(prefix)) return;
+
+	var arguments = messageArray.slice(1);
+
+	var commands = client.commands.get(command.slice(prefix.length));
+
+	if (commands) commands.run(client, message, arguments);
+});
+
+
 
 client.on("ready", async () => {
 
