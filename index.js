@@ -42,7 +42,7 @@ client.on("ready", async () => {
 
     console.log(`${client.user.username} is online.`);
 
-    client.user.setActivity("Watch Eyes", { type: "Playing" });
+    client.user.setActivity("Kijkt naar Ruben Gaming", { type: "Playing" });
 
 });
 
