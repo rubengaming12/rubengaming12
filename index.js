@@ -184,7 +184,9 @@ client.on("messageUpdate", async (oldMessage, newMessage) => {
     client.channels.cache.get('875777490554085417').send(embed);
 
 
+    
 });
+
 
 // anti link
 

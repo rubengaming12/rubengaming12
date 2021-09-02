@@ -3,14 +3,14 @@ const discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
 
     var embed = new discord.MessageEmbed()
-        .setTitle("Site")
-        .setDescription("http://servercommunitynlbe.nl/")
+        .setTitle("Info-Staff")
+        .setDescription("De staff sollicitaties zijn momenteel gesloten")
         .setColor("BLUE");
 
 }
 
 module.exports.help = {
-    name: "site",
+    name: "info staff",
     description: "Geeft al de verschillende commands",
     category: "Informatie"
 }
