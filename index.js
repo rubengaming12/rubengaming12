@@ -300,7 +300,12 @@ client.on("message", async message => {
         if (currentTime < experationTime) {
             var timeLeft = (experationTime - currentTime) / 1000;
      
-            return message.reply(`Gelieve nog ${timeLeft.toFixed(1)} seconden te wachten voor dat je het command **${commands.help.name}** gebruikt.`);
+            var cooldownEmbed = new discord.MessageEmbed()
+            .setTitle("Cooldown")
+            .setDescription(`Gelieve nog ${timeLeft.toFixed(1)} seconden te wachten voor dat je het command **${commands.help.name}** gebruikt.`)
+            .setColor("BLUE")
+
+            return message.channel.send(cooldownEmbed)
         } else {
             timeStamps.delete(message.author.id);
         }
