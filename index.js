@@ -300,7 +300,7 @@ client.on("message", async message => {
         if (currentTime < experationTime) {
             var timeLeft = (experationTime - currentTime) / 1000;
      
-            return message.reply(`Gelieve nog ${timeLeft.toFixed(1)} seconden te wachten voor dat je het command ${commands.help.name} gebruikt.`);
+            return message.reply(`Gelieve nog ${timeLeft.toFixed(1)} seconden te wachten voor dat je het command **${commands.help.name}** gebruikt.`);
         } else {
             timeStamps.delete(message.author.id);
         }
