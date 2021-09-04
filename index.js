@@ -5,6 +5,8 @@ const mysql = require("mysql");
 const levelFile = require("./data/levels.json");
 
 const activeSongs = new Map();
+const cooldowns = new Map();
+//("commandNaam", "")
 
 //  Command handler
 const fs = require("fs");
@@ -283,6 +285,28 @@ client.on("message", async message => {
     var options = {
         active: activeSongs
     };
+
+    if (!cooldowns.has(commands.help.name)) {
+        cooldowns.set(commands.help.name, new discord.Collection());
+    }
+
+    var currentTime = Date.now();
+    var timeStamps = cooldowns.get(commands.help.name);
+    var cooldownTime = commands.help.cooldown * 1000;
+
+    if (timeStamps.has(message.author.id)) {
+        var experationTime = timeStamps.get(message.author.id) + cooldownTime;
+     
+        if (currentTime < experationTime) {
+            var timeLeft = (experationTime - currentTime) / 1000;
+     
+            return message.reply(`Gelieve nog ${timeLeft.toFixed(1)} seconden te wachten voor dat je het command ${commands.help.name} gebruikt.`);
+        } else {
+            timeStamps.delete(message.author.id);
+        }
+    }
+    
+    timeStamps.set(message.author.id, currentTime);
 
     if (commands) commands.run(client, message, arguments, options);
 
