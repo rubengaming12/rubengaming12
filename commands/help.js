@@ -15,8 +15,8 @@ module.exports.run = async(client, message, args) =>{
     }
 } 
 
-// yo, ik heb net wat fout gedaan en ben nu dit kwijt. wat ben je kwijt? me commands index ect, dat moet terug
+
 module.exports.help = {
-    name: "help"
+    name: "help",
+    cooldown: 10
 }
-// zit t daar tussen? idk. het zijn 100 indexés ofz xd ben je alleen je index kwijt? nee kijk

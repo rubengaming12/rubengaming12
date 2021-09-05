@@ -39,5 +39,6 @@ message.channel.send(embed)
 
    module.exports.help = {
     name: "badge",
+    cooldown: 10,
     aliases: []
 }

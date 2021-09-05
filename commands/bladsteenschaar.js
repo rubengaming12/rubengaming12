@@ -65,6 +65,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "sps",
+    cooldown: 10,
     description: "",
     category: ""
 }

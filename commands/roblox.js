@@ -13,6 +13,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "roblox",
+    cooldown: 10,
     description: "",
     category: ""
 }

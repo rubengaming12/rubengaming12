@@ -18,5 +18,6 @@ return message.channel.send(helpEmbed);
 }
 
 module.exports.help = {
-    name: "restart20"
+    name: "restart20",
+    cooldown: 10
 }

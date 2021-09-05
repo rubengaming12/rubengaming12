@@ -8,6 +8,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "youtube",
+    cooldown: 10,
     description: "",
     category: ""
 }

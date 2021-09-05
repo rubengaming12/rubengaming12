@@ -17,5 +17,6 @@ module.exports.run = async(client, message, args) =>{
 
 
 module.exports.help = {
-    name: "doneren"
+    name: "doneren",
+    cooldown: 10
 }

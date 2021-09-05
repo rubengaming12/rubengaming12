@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
-    const channel = message.guild.channels.cache.find(ch => ch.name === "suggesties");
+    const channel = message.guild.channels.cache.find(ch => ch.name === "🎬video-ideeën");
     if (!channel) return message.reply("Suggest kanaal niet gevonden\nMaak een kanaal aan die heet**suggesties**");
 
     var argsBericht = args.join(" ");
@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
 
     var embed = new discord.MessageEmbed()
         .setDescription(argsBericht)
-        .setColor("ORANGE")
+        .setColor("BLUE")
         .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }));
 
         channel.send(embed).then(async (msg) => {
@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "sugge1l111cstie",
+    name: "vd",
     cooldown: 10,
     description: "Geeft al de verschillende commands",
     category: "Informatie"

@@ -48,6 +48,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "announcement",
+    cooldown: 10,
     description: "Geeft al de verschillende commands",
     category: "Informatie"
 }

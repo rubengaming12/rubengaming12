@@ -10,5 +10,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "dobbel"
+    name: "dobbel",
+    cooldown: 10
 }
