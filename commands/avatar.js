@@ -12,7 +12,9 @@ module.exports.run = async (client, message, args) => {
     var embed = new discord.MessageEmbed()
         .setTitle(`Avatar van ${member.user.username}`)
         .setColor("BLUE")
-        .setImage(member.user.displayAvatarURL({ dynamic: true, size: 4096 }));
+        .setImage(member.user.displayAvatarURL({ dynamic: true, size: 4096 }))
+        .setFooter(`Requested by ${message.author.tag}`)
+        .setTimestamp();
 
     message.channel.send(embed);
 

@@ -7,7 +7,9 @@ module.exports.run = async (bot, message, args) => {
     var embed = new discord.MessageEmbed()
         .setTitle("Systeem Restart")
         .setDescription("⚠Herstarten van de bot...")
-        .setColor("ORANGE");
+        .setColor("ORANGE")
+        .setFooter(`Requested by ${message.author.tag}`)
+        .setTimestamp();
 
         return message.channel.send(embed);
 

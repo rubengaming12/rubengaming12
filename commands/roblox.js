@@ -5,7 +5,9 @@ module.exports.run = async (client, message, args) => {
     var embed = new discord.MessageEmbed()
         .setTitle("Roblox naam")
         .setColor("BLUE")
-        .setDescription("Ruben zijn roblox naam is:\n**kiansadler6556**\n\nhttps://www.roblox.com/users/471176128/profile");
+        .setDescription("Ruben zijn roblox naam is:\n**kiansadler6556**\n\nhttps://www.roblox.com/users/471176128/profile")
+        .setFooter(`Requested by ${message.author.tag}`)
+        .setTimestamp();
 
         return message.channel.send(embed);
 

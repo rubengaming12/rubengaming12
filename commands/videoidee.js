@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     if (!channel) return message.reply("Suggest kanaal niet gevonden\nMaak een kanaal aan die heet**suggesties**");
 
     var argsBericht = args.join(" ");
-    if (!argsBericht) return message.reply("Geen suggestie meegegeven");
+    if (!argsBericht) return message.reply("Geef een duidelijk idee mee");
 
     var embed = new discord.MessageEmbed()
         .setDescription(argsBericht)

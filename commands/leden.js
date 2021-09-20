@@ -12,7 +12,9 @@ module.exports.run = async(client, message, args) =>{
         .addField("Leden", ledenTotal, true)
         .addField("Bots", bots, true)
         .addField("Mensen", people, true)
-        .addField("Online", online, true);
+        .addField("Online", online, true)
+        .setFooter(`Requested by ${message.author.tag}`)
+        .setTimestamp();
 
         message.channel.send(ledenEmbed);
 

@@ -8,7 +8,14 @@ module.exports.run = async(client, message, args) =>{
 
         message.author.send(text);
 
-        message.reply("Alle commands kan je vinden in je privé berichten");
+        var embed = new discord.MessageEmbed()
+            .setTitle("Help command")
+            .setColor("GREEN")
+            .setDescription("Alle commands kan je in je dm vinden")
+            .setFooter(`Requested by ${message.author.tag}`)
+            .setTimestamp();
+
+            return message.channel.send(embed);
 
     }catch(error){
         message.reply("Er is fout gegaan")

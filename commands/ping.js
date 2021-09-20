@@ -10,8 +10,8 @@ module.exports.run = async(client, message, args) => {
         var embed = new Discord.MessageEmbed()
         .setDescription(`Bot latency: **${messageTime.createdTimestamp - message.createdTimestamp}ms**\n API Latency: **${Math.round(client.ws.ping)}ms**`)
         .setColor('BLUE')
-        .setFooter('Ruben Gaming')
-        .setTimestamp()
+        .setFooter(`Requested by ${message.author.tag}`)
+        .setTimestamp();
         message.channel.send(embed);
         }) 
     

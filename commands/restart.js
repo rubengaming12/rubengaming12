@@ -10,7 +10,8 @@ module.exports.run = async (bot, message, args) => {
     .setTitle("Systeem restart")
     .setDescription("De bot is opnieuw opgestart door de Bot\nDeveloper of automatisch.\nAls u een prompt had aangevraagd moet\ndeze opnieuw worden gestart.\n\nErvaart u problemen met de bot? Neem\ncontact op met <@559372712540110880>")
     .setColor("ORANGE")
-    .setTimestamp()
+    .setFooter(`Requested by ${message.author.tag}`)
+    .setTimestamp();
 
 return message.channel.send(helpEmbed);
 
