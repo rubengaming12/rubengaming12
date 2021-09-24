@@ -9,7 +9,7 @@ module.exports.run = async(client, message, args) =>{
 
      if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("U heeft hier geen perms voor");
 
-     if (!args[0]) return message.reply("Geen gebruiker opgegeven");
+     if (!args[0]) return message.reply("❌Lid niet gevonden");
 
      if (!args[1]) return message.reply("Geen redenen opgegeven");
 
@@ -33,13 +33,14 @@ module.exports.run = async(client, message, args) =>{
         if(err) console.log(err);
     });
 
+
     var embed = new discord.MessageEmbed()
             .setColor("#ff0000")
             .setFooter(message.member.displayName, message.author.displayAvatarURL)
             .setTimestamp() 
-            .setDescription(`** Gekickt:** ${warnUser} (${warnUser.id})
-            **Gekickt door:** ${message.author}
-            **Redenen: ** ${reason}`)
+            .setDescription(`** Gewarnt:** ${warnUser} (${warnUser.id})
+            **Gewarnt door:** ${message.author}
+            **Reden: ** ${reason}`)
             .addField("Aantal warns:", warns[warnUser.id].warns);
 
             var channel = message.member.guild.channels.cache.get("857935702734143508");
@@ -47,6 +48,17 @@ module.exports.run = async(client, message, args) =>{
             if(!channel) return;
 
             channel.send(embed);
+
+      var warnEmbed = new discord.MessageEmbed()
+            .setTitle("⚠Warn Systeem")
+            .setColor("#ff0000")
+            .setTimestamp() 
+            .setDescription(`**Gewarnde persoon:** ${warnUser} (${warnUser.id})
+            **Gewarnt door:** ${message.author}
+            **Reden: ** ${reason}`)
+            .setTimestamp();
+
+            return message.channel.send(warnEmbed);
 
             if(warns[warnUser.id].warns === 3) {
 
@@ -67,6 +79,5 @@ module.exports.run = async(client, message, args) =>{
 
 
 module.exports.help = {
-    name: "warn",
-    cooldown: 10
+    name: "warn"
 }
